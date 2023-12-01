@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Title Guessing Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+  <button><a href = "game-system-index.html">Home page</a></button>
+    <h1>Guess the Book Title</h1>
+  <p id="feedback"></p>
+  <button onclick="startGame()">Start Game</button>
+  <script>
+    // List of book titles for the game
+    const bookTitles = [
+      "To Kill a Mockingbird",
+      "1984",
+      "The Great Gatsby",
+      "The Catcher in the Rye",
+      "Harry Potter and the Sorcerer's Stone",
+      "The Hobbit",
+      "Pride and Prejudice",
+      "The Lord of the Rings",
+      "The Hunger Games",
+      "The Da Vinci Code"
+    ];
+
+    let currentTitle, shuffledTitle;
+
+    function startGame() {
+      // Reset feedback
+      document.getElementById("feedback").innerHTML = "";
+
+      // Choose a random book title
+      currentTitle = getRandomTitle();
+      
+      // Shuffle the characters of the title
+      shuffledTitle = shuffleTitle(currentTitle);
+
+      // Display the shuffled title
+      displayShuffledTitle();
+    }
+
+    function getRandomTitle() {
+      const randomIndex = Math.floor(Math.random() * bookTitles.length);
+      return bookTitles[randomIndex];
+    }
+
+    function shuffleTitle(title) {
+      const shuffledArray = title.split('').sort(() => Math.random() - 0.5);
+      return shuffledArray.join('');
+    }
+
+    function displayShuffledTitle() {
+      document.getElementById("feedback").innerHTML = "";
+      document.body.appendChild(document.createElement("br"));
+      document.body.appendChild(document.createTextNode(shuffledTitle));
+    }
+
+    function checkAnswer() {
+      const userGuess = prompt("Guess the book title:");
+
+      if (userGuess === currentTitle) {
+        document.getElementById("feedback").innerHTML = "Correct! Well done!";
+      } else {
+        document.getElementById("feedback").innerHTML = "Incorrect. Try again!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @legoguy246
 - 👀 I’m interested in lego
-- 🌱 I’m currently learning micro python
+- 🌱 I’m currently learning C++
 - 📫 How to reach me email 22029@bingleygrammar.org
 
 <!---
